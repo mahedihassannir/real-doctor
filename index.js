@@ -83,6 +83,19 @@ async function run() {
 
         })
 
+        // here is delete method
+
+        app.delete('/users/:id', async (req, res) => {
+
+            let id = req.params.id
+
+            let query = { _id: new ObjectId(id) }
+
+            let result = await UserDb.deleteOne(query)
+
+            res.send(result)
+        })
+
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
