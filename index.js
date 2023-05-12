@@ -76,7 +76,13 @@ async function run() {
 
             let query = { _id: new ObjectId(id) }
 
-            let result = await UserDb.findOne(query)
+
+
+            let options = {
+                projection: { title: 1, img: 1, price: 1, description: 1,_id:1 }
+            }
+
+            let result = await UserDb.findOne(query, options)
 
             res.send(result)
 
